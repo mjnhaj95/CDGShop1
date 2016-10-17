@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace CDGShop.Data.Infrastructure
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> where T : class /* T đại diện cho kiểu chưa biết, T có thể làm việc tất cả kiểu*/
     {
         // Marks an entity as new
         void Add(T entity);

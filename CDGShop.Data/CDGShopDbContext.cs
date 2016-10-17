@@ -10,7 +10,7 @@ namespace CDGShop.Data
 {
    public class CDGShopDbContext: DbContext
     {
-        public CDGShopDbContext() : base("")
+        public CDGShopDbContext() : base("CDGShopConnection")
         {
             this.Configuration.LazyLoadingEnabled = false;
         }
