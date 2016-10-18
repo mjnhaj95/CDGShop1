@@ -6,10 +6,9 @@ using System.Linq.Expressions;
 
 namespace CDGShop.Data.Infrastructure
 {
-    public abstract class RepositoryBase<T>: IRepository<T> where T : class
+    public abstract class RepositoryBase<T> : IRepository<T> where T : class
     {
         #region Properties
-
         private CDGShopDbContext dataContext;
         private readonly IDbSet<T> dbSet;
 
@@ -23,8 +22,7 @@ namespace CDGShop.Data.Infrastructure
         {
             get { return dataContext ?? (dataContext = DbFactory.Init()); }
         }
-
-        #endregion Properties
+        #endregion
 
         protected RepositoryBase(IDbFactory dbFactory)
         {
@@ -33,7 +31,6 @@ namespace CDGShop.Data.Infrastructure
         }
 
         #region Implementation
-
         public virtual void Add(T entity)
         {
             dbSet.Add(entity);
@@ -49,7 +46,11 @@ namespace CDGShop.Data.Infrastructure
         {
             dbSet.Remove(entity);
         }
-
+        public virtual void Delete(int id)
+        {
+            var entity = dbSet.Find(id);
+            dbSet.Remove(entity);
+        }
         public virtual void DeleteMulti(Expression<Func<T, bool>> where)
         {
             IEnumerable<T> objects = dbSet.Where<T>(where).AsEnumerable();
@@ -66,6 +67,7 @@ namespace CDGShop.Data.Infrastructure
         {
             return dbSet.Where(where).ToList();
         }
+
 
         public virtual int Count(Expression<Func<T, bool>> where)
         {
@@ -132,7 +134,6 @@ namespace CDGShop.Data.Infrastructure
         {
             return dataContext.Set<T>().Count<T>(predicate) > 0;
         }
-
-        #endregion Implementation
+        #endregion
     }
 }
