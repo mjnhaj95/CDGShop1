@@ -10,12 +10,17 @@ namespace CDGShop.Data.Repositories
 {
     public interface IPostCategoryRepository : IRepository<PostCategory>
     {
-
+        IEnumerable<PostCategory> GetMulti(Func<PostCategory, bool> p);
     }
-   public class PostCategoryRepository : RepositoryBase<PostCategory>, IPostCategoryRepository
+    public class PostCategoryRepository : RepositoryBase<PostCategory>, IPostCategoryRepository
     {
         public PostCategoryRepository(IDbFactory dbFactory) : base(dbFactory)
         {
+        }
+
+        public IEnumerable<PostCategory> GetMulti(Func<PostCategory, bool> p)
+        {
+            throw new NotImplementedException();
         }
     }
 }
