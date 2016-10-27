@@ -3,18 +3,21 @@
 var myApp = angular.module('myModule', []);
 
 myApp.controller("schoolController", schoolController);
-myApp.service('Validator', Validator);
 
-schoolController.$inject = ['$scope', 'Validator'];
+myApp.directive("cdgShopDirective", cdgShopDirective);
 
-function schoolController($scope, Validator) {
+myApp.service('ValidatorService', ValidatorService);
+
+schoolController.$inject = ['$scope', 'ValidatorService'];
+
+function schoolController($scope, ValidatorService) {
     $scope.checkNumber = function () {
         $scope.message = Validator.checkNumber(1);
     }
     $scope.num = 1;
 }
 
-function Validator($window) {
+function ValidatorService($window) {
     return { checkNumber: checkNumber }
 
     function checkNumber(input) {
@@ -24,5 +27,11 @@ function Validator($window) {
         else {
             return 'This is odd';
         }
+    }
+}
+function cdgShopDirective() {
+    return {
+        restrict: 'A', // giới hạn trị cập cho directive
+        templateUrl: "/Scripts/spa/cdgShopDirective.html"
     }
 }
