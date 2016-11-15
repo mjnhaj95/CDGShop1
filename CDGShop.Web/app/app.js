@@ -1,7 +1,10 @@
 ﻿/// <reference path="/Assets/admin/libs/angular/angular.js" />
 
 (function () {
-    angular.module('cdgshop', ['cdgshop.products', 'cdgshop.common']).config(config);
+    angular.module('cdgshop',
+                  ['cdgshop.products',
+                   'cdgshop.product_categories',
+                   'cdgshop.common']).config(config);
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
 

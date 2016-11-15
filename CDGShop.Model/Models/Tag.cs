@@ -8,13 +8,13 @@ namespace CDGShop.Model.Models
     {
         [Key]
         [MaxLength(50)]
-        [Column(TypeName ="varchar")]
+        [Column(TypeName = "varchar")]
         public string ID { set; get; }
 
         [MaxLength(50)]
-        public string Name { set; get; }
+        public string Name { set; get; } // tên Tag
 
         [MaxLength(50)]
-        public string Type { set; get; }
+        public string Type { set; get; } // Kiểu tag
     }
 }

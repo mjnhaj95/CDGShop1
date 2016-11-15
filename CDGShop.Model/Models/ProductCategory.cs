@@ -18,7 +18,7 @@ namespace CDGShop.Model.Models
         [Required]
         public string Alias { set; get; }
 
-        public string Decription { set; get; }
+        public string Description { set; get; }
         public int? ParentID { set; get; }
         public int? DisplayOrder { set; get; }
         public string Image { set; get; }

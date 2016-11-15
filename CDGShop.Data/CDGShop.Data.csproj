@@ -81,6 +81,10 @@
     <Compile Include="Migrations\201610261713130_Changkey.Designer.cs">
       <DependentUpon>201610261713130_Changkey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611151427459_changekey.cs" />
+    <Compile Include="Migrations\201611151427459_changekey.Designer.cs">
+      <DependentUpon>201611151427459_changekey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -128,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610261713130_Changkey.resx">
       <DependentUpon>201610261713130_Changkey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611151427459_changekey.resx">
+      <DependentUpon>201611151427459_changekey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

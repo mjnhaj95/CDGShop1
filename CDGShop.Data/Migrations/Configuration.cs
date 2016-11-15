@@ -1,9 +1,10 @@
-namespace CDGShop.Data.Migrations
+﻿namespace CDGShop.Data.Migrations
 {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Model.Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -17,32 +18,23 @@ namespace CDGShop.Data.Migrations
 
         protected override void Seed(CDGShop.Data.CDGShopDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            CreateProductCategorySample(context);
+        }
 
-            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new CDGShopDbContext()));
-
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new CDGShopDbContext()));
-
-            var user = new ApplicationUser()
+        private void CreateProductCategorySample(CDGShop.Data.CDGShopDbContext context)
+        {
+            if (context.ProductCategories.Count() == 0)
             {
-                UserName = "tedu",
-                Email = "tedu.international@gmail.com",
-                EmailConfirmed = true,
-                Birthday = DateTime.Now,
-                Fullname = "Technology Education"
+                List<ProductCategory> listProductCategory = new List<ProductCategory>()
+            {
+                new ProductCategory() { Name="Điện lạnh",Alias="dien-lanh",Status=true },
+                 new ProductCategory() { Name="Viễn thông",Alias="vien-thong",Status=true },
+                  new ProductCategory() { Name="Đồ gia dụng",Alias="do-gia-dung",Status=true },
+                   new ProductCategory() { Name="Mỹ phẩm",Alias="my-pham",Status=true }
             };
-
-            manager.Create(user, "123654$");
-
-            if (!roleManager.Roles.Any())
-            {
-                roleManager.Create(new IdentityRole { Name = "Admin" });
-                roleManager.Create(new IdentityRole { Name = "User" });
+                context.ProductCategories.AddRange(listProductCategory);
+                context.SaveChanges();
             }
-
-            var adminUser = manager.FindByEmail("tedu.international@gmail.com");
-
-            manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
         }
     }
 }
