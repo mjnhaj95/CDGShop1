@@ -1,6 +1,7 @@
 ﻿using CDGShop.Data.Infrastructure;
 using CDGShop.Data.Repositories;
 using CDGShop.Model.Models;
+using System;
 using System.Collections.Generic;
 
 namespace CDGShop.Service
@@ -14,6 +15,8 @@ namespace CDGShop.Service
         ProductCategory Delete(int id);
 
         IEnumerable<ProductCategory> GetAll();
+
+        IEnumerable<ProductCategory> GetAll(string keyword); // tìm kiếm theo dk nào đấy
 
         IEnumerable<ProductCategory> GetAllByParentId(int parentId);
 
@@ -46,6 +49,18 @@ namespace CDGShop.Service
         public IEnumerable<ProductCategory> GetAll()
         {
             return _postCategoryRepository.GetAll();
+        }
+
+        public IEnumerable<ProductCategory> GetAll(string keyword)
+        {
+            if (!string.IsNullOrEmpty(keyword)) // ktra keyword khác rỗng
+            {
+                return _postCategoryRepository.GetMulti(x => x.Name.Contains(keyword) || x.Description.Contains(keyword));
+            }
+            else
+            {
+                return _postCategoryRepository.GetAll();
+            }
         }
 
         public IEnumerable<ProductCategory> GetAllByParentId(int parentId)
