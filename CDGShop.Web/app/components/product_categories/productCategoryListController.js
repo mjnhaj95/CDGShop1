@@ -21,7 +21,7 @@
                 params: {
                     keyword: $scope.keyword,
                     page: page,
-                    pageSize: 1
+                    pageSize: 20
                 }
             }
             apiService.get('/api/productcategory/getall', config, function (result) {
@@ -29,7 +29,7 @@
                     notificationService.displayWarning('Không có bản ghi nào được tìm thấy.');
                 }
                 else {
-                    notificationService.displaySuccess('Đã tìm thấy ' + result.data.TotalCount + ' bản ghi')
+                    //notificationService.displaySuccess('Đã tìm thấy ' + result.data.TotalCount + ' bản ghi')
                 }
 
                 $scope.productCategories = result.data.Items;                            // dữ liệu lấy về
