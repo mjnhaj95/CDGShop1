@@ -1,3 +1,3 @@
 ﻿(function () {
-    angular.module('cdgshop.common', ['ui.router'])
+    angular.module('cdgshop.common', ['ui.router', 'ngBootbox'])
 })();
