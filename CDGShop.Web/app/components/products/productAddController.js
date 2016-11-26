@@ -30,8 +30,14 @@
                 console.log('Cannot get list parent');
             });
         }
+        $scope.ChooseImage = function ChooseImage() {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.product.Image = fileUrl;
+            }
+            finder.popup();
+        }
 
         loadProductCategory();
     }
-
 })(angular.module('cdgshop.product_categories'));
