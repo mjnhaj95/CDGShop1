@@ -85,6 +85,14 @@
     <Compile Include="Migrations\201611151427459_changekey.Designer.cs">
       <DependentUpon>201611151427459_changekey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611261018592_AddTagField.cs" />
+    <Compile Include="Migrations\201611261018592_AddTagField.Designer.cs">
+      <DependentUpon>201611261018592_AddTagField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611271647002_AddField1.cs" />
+    <Compile Include="Migrations\201611271647002_AddField1.Designer.cs">
+      <DependentUpon>201611271647002_AddField1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -135,6 +143,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611151427459_changekey.resx">
       <DependentUpon>201611151427459_changekey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611261018592_AddTagField.resx">
+      <DependentUpon>201611261018592_AddTagField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611271647002_AddField1.resx">
+      <DependentUpon>201611271647002_AddField1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

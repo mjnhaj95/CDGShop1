@@ -1,9 +1,5 @@
 ﻿using CDGShop.Model.Models;
 using CDGShop.Web.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace CDGShop.Web.Infrastructure.Extensions
 {
@@ -93,6 +89,7 @@ namespace CDGShop.Web.Infrastructure.Extensions
             product.MetaKeyword = productVm.MetaKeyword;
             product.MetaDescription = productVm.MetaDescription;
             product.Status = productVm.Status;
+            product.Tags = productVm.Tags;
         }
     }
 }
