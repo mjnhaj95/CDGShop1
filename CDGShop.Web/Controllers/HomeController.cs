@@ -26,5 +26,23 @@ namespace CDGShop.Web.Controllers
 
             return View();
         }
+
+        [ChildActionOnly]               // Ko thể goi trực tiếp
+        public ActionResult Footer()
+        {
+            return PartialView();
+        }
+
+        [ChildActionOnly]               // Ko thể goi trực tiếp
+        public ActionResult Header()
+        {
+            return PartialView();
+        }
+
+        [ChildActionOnly]
+        public ActionResult Category()
+        {
+            return PartialView();
+        }
     }
 }
