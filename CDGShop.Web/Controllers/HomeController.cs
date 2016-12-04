@@ -1,4 +1,8 @@
-﻿using System;
+﻿using AutoMapper;
+using CDGShop.Model.Models;
+using CDGShop.Service;
+using CDGShop.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +12,15 @@ namespace CDGShop.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private IProductCategoryService _productCategoryService;
+        private ICommonService _commonService;
+
+        public HomeController(IProductCategoryService productCategoryService, ICommonService commonService)
+        {
+            _productCategoryService = productCategoryService;
+            _commonService = commonService;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -30,10 +43,12 @@ namespace CDGShop.Web.Controllers
         [ChildActionOnly]               // Ko thể goi trực tiếp
         public ActionResult Footer()
         {
-            return PartialView();
+            var footerModel = _commonService.GetFooter();
+            var footerViewModel = Mapper.Map<Footer, FooterViewModel>(footerModel);
+            return PartialView(footerViewModel);
         }
 
-        [ChildActionOnly]               // Ko thể goi trực tiếp
+        [ChildActionOnly]
         public ActionResult Header()
         {
             return PartialView();
@@ -42,7 +57,9 @@ namespace CDGShop.Web.Controllers
         [ChildActionOnly]
         public ActionResult Category()
         {
-            return PartialView();
+            var model = _productCategoryService.GetAll();
+            var listProductCategoryViewModel = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(model);
+            return PartialView(listProductCategoryViewModel);
         }
     }
 }

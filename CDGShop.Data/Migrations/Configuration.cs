@@ -1,5 +1,6 @@
 ﻿namespace CDGShop.Data.Migrations
 {
+    using Common;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Model.Models;
@@ -34,6 +35,14 @@
             };
                 context.ProductCategories.AddRange(listProductCategory);
                 context.SaveChanges();
+            }
+        }
+
+        private void CreateFooter(CDGShopDbContext context)
+        {
+            if (context.Footers.Count(x => x.ID == CommonConstants.DefaultFooterId) == 0)
+            {
+                string content = "";
             }
         }
     }
