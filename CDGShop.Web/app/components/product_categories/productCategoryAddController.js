@@ -1,12 +1,16 @@
 ﻿(function (app) {
     app.controller('productCategoryAddController', productCategoryAddController);
 
-    productCategoryAddController.$inject = ['apiService', '$scope', 'notificationService', '$state']; //$state điều hướng
+    productCategoryAddController.$inject = ['apiService', '$scope', 'notificationService', '$state', 'commonService'];
 
-    function productCategoryAddController(apiService, $scope, notificationService, $state) {
+    function productCategoryAddController(apiService, $scope, notificationService, $state, commonService) {
         $scope.productCategory = {
             CreatedDate: new Date(),
-            Status: true
+            Status: true,
+        }
+        $scope.GetSeoTitle = GetSeoTitle;
+        function GetSeoTitle() {
+            $scope.productCategory.Alias = commonService.getSeoTitle($scope.productCategory.Name);
         }
 
         $scope.AddProductCategory = AddProductCategory;
@@ -20,7 +24,6 @@
                     notificationService.displayError('Thêm mới không thành công.');
                 });
         }
-
         function loadParentCategory() {
             apiService.get('api/productcategory/getallparents', null, function (result) {
                 $scope.parentCategories = result.data;
@@ -28,6 +31,7 @@
                 console.log('Cannot get list parent');
             });
         }
+
         loadParentCategory();
     }
 })(angular.module('cdgshop.product_categories'));
