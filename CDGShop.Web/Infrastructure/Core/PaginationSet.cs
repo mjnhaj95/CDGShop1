@@ -17,6 +17,7 @@ namespace CDGShop.Web.Infrastructure.Core
 
         public int TotalPages { set; get; }         // Số trang
         public int TotalCount { set; get; }         // Tổng số bản ghi
+        public int MaxPage { set; get; }            // Tổng số trang hiện thị
         public IEnumerable<T> Items { set; get; }   // Lưu Items
     }
 }
