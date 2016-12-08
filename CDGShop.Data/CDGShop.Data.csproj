@@ -97,6 +97,10 @@
     <Compile Include="Migrations\201612041437361_AddContentToSilde.Designer.cs">
       <DependentUpon>201612041437361_AddContentToSilde.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612080256108_AddMoreQuantity.cs" />
+    <Compile Include="Migrations\201612080256108_AddMoreQuantity.Designer.cs">
+      <DependentUpon>201612080256108_AddMoreQuantity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -156,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612041437361_AddContentToSilde.resx">
       <DependentUpon>201612041437361_AddContentToSilde.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612080256108_AddMoreQuantity.resx">
+      <DependentUpon>201612080256108_AddMoreQuantity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
