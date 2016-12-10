@@ -25,6 +25,7 @@ namespace CDGShop.Web.Controllers
             _productService = productService;
         }
 
+        [OutputCache(Duration = 60)]
         public ActionResult Index()
         {
             var slideModel = _commonService.GetSlides();
@@ -41,25 +42,13 @@ namespace CDGShop.Web.Controllers
             return View(homeViewModel);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
         [ChildActionOnly]               // Ko thể goi trực tiếp
+        [OutputCache(Duration = 3600)]
         public ActionResult Footer()
         {
             var footerModel = _commonService.GetFooter();
             var footerViewModel = Mapper.Map<Footer, FooterViewModel>(footerModel);
+            //ViewBag.Time = DateTime.Now.ToString("T");
             return PartialView(footerViewModel);
         }
 
@@ -70,6 +59,7 @@ namespace CDGShop.Web.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 3600)]
         public ActionResult Category()
         {
             var model = _productCategoryService.GetAll();
