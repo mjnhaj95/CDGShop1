@@ -24,6 +24,7 @@
             CreateProductCategorySample(context);
             CreateSlide(context);
             CreatePage(context);
+            CreateContactDetail(context);
         }
 
         private void CreateProductCategorySample(CDGShop.Data.CDGShopDbContext context)
@@ -99,6 +100,41 @@
                         Status = true
                     };
                     context.Pages.Add(page);
+                    context.SaveChanges();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var eve in ex.EntityValidationErrors)
+                    {
+                        Trace.WriteLine($"Entity of type \"{eve.Entry.Entity.GetType().Name}\" in state \"{eve.Entry.State}\" has the following validation error.");
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            Trace.WriteLine($"- Property: \"{ve.PropertyName}\", Error: \"{ve.ErrorMessage}\"");
+                        }
+                    }
+                }
+            }
+        }
+
+        private void CreateContactDetail(CDGShopDbContext context)
+        {
+            if (context.ContactDetails.Count() == 0)
+            {
+                try
+                {
+                    var contactDetail = new CDGShop.Model.Models.ContactDetail()
+                    {
+                        Name = "Shop thời trang CDG",
+                        Address = "18 Phường Đức Thắng, Đức Thắng, Bắc Từ Liêm, Hà Nội, Việt Nam",
+                        Email = "cdg@gmail.com",
+                        Lat = 21.0715982,
+                        Lng = 105.7739778,
+                        Phone = "01655303878",
+                        Website = "haileminh.com",
+                        Other = "",
+                        Status = true
+                    };
+                    context.ContactDetails.Add(contactDetail);
                     context.SaveChanges();
                 }
                 catch (DbEntityValidationException ex)
