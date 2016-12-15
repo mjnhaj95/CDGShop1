@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CDGShop.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,18 @@ namespace CDGShop.Web.Controllers
     {
         // GET: Account
         public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(RegisterViewModel model)
         {
             return View();
         }

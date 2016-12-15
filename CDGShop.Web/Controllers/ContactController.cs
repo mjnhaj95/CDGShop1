@@ -36,6 +36,10 @@ namespace CDGShop.Web.Controllers
                 newFeedback.UpdateFeedback(feedbackViewModel);
                 _feedbackService.Create(newFeedback);
                 _feedbackService.Save();
+
+                feedbackViewModel.Name = "";
+                feedbackViewModel.Message = "";
+                feedbackViewModel.Email = "";
             }
             feedbackViewModel.ContactDetail = GetDetail();
             return View("Index", feedbackViewModel);
